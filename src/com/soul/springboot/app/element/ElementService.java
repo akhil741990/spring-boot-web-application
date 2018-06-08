@@ -26,4 +26,8 @@ public class ElementService {
 		}
 		
 	}
+	
+	public void addElememt(Element element) {
+		elements.add(element);
+	}
 }
