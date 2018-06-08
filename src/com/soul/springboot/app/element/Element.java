@@ -1,4 +1,4 @@
-package com.soul.springboot.app.controller.element;
+package com.soul.springboot.app.element;
 
 public class Element {
 	private String name;
@@ -14,6 +14,10 @@ public class Element {
 		this.name = name;
 		this.id = id;
 		this.description = description;
+	}
+
+	public Element(String name) {
+		this.name = name;
 	}
 
 	public String getName() {
