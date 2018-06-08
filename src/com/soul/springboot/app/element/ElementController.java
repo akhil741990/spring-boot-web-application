@@ -26,10 +26,11 @@ public class ElementController {
 	@RequestMapping("/element/{id}")
 	public Element getElement(@PathVariable String id) {
 		Integer identifier = Integer.parseInt(id);
-		if(identifier > 5 || identifier < 0) {
-			return new Element("ELEMENT NOT FOUND");
-		}
-		return elementService.getElements().get(Integer.parseInt(id));	
+//		if(identifier > 5 || identifier < 0) {
+//			return new Element("ELEMENT NOT FOUND");
+//		}
+//		return elementService.getElements().get(Integer.parseInt(id));	
+		return elementService.getElement(identifier);
 	}
 	
 	

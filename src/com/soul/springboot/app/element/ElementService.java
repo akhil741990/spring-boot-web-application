@@ -17,4 +17,13 @@ public class ElementService {
 	public List<Element> getElements(){
 		return elements;
 	}
+	
+	public Element getElement(Integer id) {
+		try {
+			return elements.stream().filter(e ->e.getId().equals(id)).findFirst().get();
+		}catch (Exception e) {
+			return new Element("NO SUCH ELEMENT");
+		}
+		
+	}
 }
