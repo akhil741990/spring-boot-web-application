@@ -30,6 +30,10 @@ public class ElementService {
 	}
 	
 
+	public void addElememt(Element element) {
+		this.elements.add(element);
+	}
+	
 	public void updateElememt(Element element, Integer id) {
 		int i = 0;
 		for(Element e : elements) {
@@ -41,7 +45,9 @@ public class ElementService {
 		}
 	}
 
-	public void addElememt(Element element) {
-		this.elements.add(element);
+	public void deleteElement(Integer id) {
+		elements.removeIf(t -> t.getId().equals(id));
 	}
+	
+	
 }

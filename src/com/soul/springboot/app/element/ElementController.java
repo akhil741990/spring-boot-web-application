@@ -41,8 +41,12 @@ public class ElementController {
 		elementService.addElememt(element);
 	}
 
-	@RequestMapping(method=RequestMethod.POST, value="element/{id}")
-	public void addElement(@RequestBody Element element, @PathVariable Integer id) {
+	@RequestMapping(method=RequestMethod.PUT, value="element/{id}")
+	public void updateElement(@RequestBody Element element, @PathVariable Integer id) {
 		elementService.updateElememt(element, id);
+	}
+	@RequestMapping(method=RequestMethod.DELETE, value="element/{id}")
+	public void deleteElement(@PathVariable Integer id) {
+		elementService.deleteElement(id);
 	}
 }
