@@ -36,9 +36,13 @@ public class ElementController {
 	}
 	
 	
-	@RequestMapping(method=RequestMethod.POST, value="elements")
+	@RequestMapping(method=RequestMethod.POST, value="element")
 	public void addElement(@RequestBody Element element) {
 		elementService.addElememt(element);
 	}
-	
+
+	@RequestMapping(method=RequestMethod.POST, value="element/{id}")
+	public void addElement(@RequestBody Element element, @PathVariable Integer id) {
+		elementService.updateElememt(element, id);
+	}
 }

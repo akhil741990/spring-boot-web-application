@@ -29,7 +29,19 @@ public class ElementService {
 		
 	}
 	
+
+	public void updateElememt(Element element, Integer id) {
+		int i = 0;
+		for(Element e : elements) {
+			if(e.getId().equals(id)) {
+				elements.set(i, element);
+				break; // Assumption id is unique
+			}
+			i++;
+		}
+	}
+
 	public void addElememt(Element element) {
-		elements.add(element);
+		this.elements.add(element);
 	}
 }
