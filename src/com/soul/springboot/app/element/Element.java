@@ -1,7 +1,13 @@
 package com.soul.springboot.app.element;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Element {
+	
 	private String name;
+	@Id
 	private Integer id;
 	private String description;
 	

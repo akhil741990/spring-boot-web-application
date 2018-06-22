@@ -4,25 +4,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ElementService {
 
-	private List<Element> elements =    new ArrayList<>(
-			Arrays.asList(new Element("Earth",0,"Prithvi"),
-			new Element("Water", 1, "Jal"),
-			new Element("Air",2,"Vayu"),
-			new Element("Fire", 3, "Agni"),
-			new Element("Ether",4,"Aakash")));
+	@Autowired
+	private ElementRepository elementRepo;
 	
 	public List<Element> getElements(){
+		List<Element> elements = new ArrayList<>();
+		elementRepo.findAll().forEach(elements::add);
 		return elements;
 	}
 	
 	public Element getElement(Integer id) {
 		try {
-			return elements.stream().filter(e ->e.getId().equals(id)).findFirst().get();
+			return elementRepo.findOne(id);
 		}catch (Exception e) {
 			return new Element("NO SUCH ELEMENT");
 		}
@@ -31,22 +30,15 @@ public class ElementService {
 	
 
 	public void addElememt(Element element) {
-		this.elements.add(element);
+		elementRepo.save(element);
 	}
 	
 	public void updateElememt(Element element, Integer id) {
-		int i = 0;
-		for(Element e : elements) {
-			if(e.getId().equals(id)) {
-				elements.set(i, element);
-				break; // Assumption id is unique
-			}
-			i++;
-		}
+		elementRepo.save(element);
 	}
 
 	public void deleteElement(Integer id) {
-		elements.removeIf(t -> t.getId().equals(id));
+		elementRepo.delete(id);
 	}
 	
 	
